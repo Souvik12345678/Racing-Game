@@ -2250,7 +2250,7 @@ GameObject:
   - component: {fileID: 7907042733875093949}
   - component: {fileID: 7907042733875093950}
   - component: {fileID: 7907042733875093939}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: FrontLeftTire
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2329,7 +2329,7 @@ GameObject:
   - component: {fileID: 7907042734118823970}
   - component: {fileID: 7907042734118823969}
   - component: {fileID: 7907042734118823974}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: FrontRightTire
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2683,7 +2683,7 @@ Rigidbody2D:
   m_UseAutoMass: 0
   m_Mass: 2
   m_LinearDrag: 1
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
@@ -2704,7 +2704,7 @@ GameObject:
   - component: {fileID: 7907042734880903293}
   - component: {fileID: 7907042734880903290}
   - component: {fileID: 7907042734880903294}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: RearLeftTire
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2898,7 +2898,7 @@ GameObject:
   - component: {fileID: 7907042735244842687}
   - component: {fileID: 7907042735244842684}
   - component: {fileID: 7907042735244842672}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: RearRightTire
   m_TagString: Untagged
   m_Icon: {fileID: 0}

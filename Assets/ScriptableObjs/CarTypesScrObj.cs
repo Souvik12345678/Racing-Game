@@ -8,7 +8,9 @@ public class CarTypesScrObj : ScriptableObject
     public GameObject pickup_2;
     public GameObject pickup;
 
+    public enum VehicleTypes { NONE, TRUCK, SM_TRUCK, PICKUP_2, PICKUP };
     GameObject[] vehicles = new GameObject[4];
+
 
     private void OnEnable()
     {

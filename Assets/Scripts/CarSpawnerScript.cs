@@ -8,7 +8,8 @@ public class CarSpawnerScript : MonoBehaviour
     public GameObject car;
 
     float[] xRanges = { -1.85f, -0.75f, 0.75f, 1.85f };
-    uint previousUpOrDown;
+    bool isPrevSpwnUpLane;
+    CarTypesScrObj.VehicleTypes[] latestSpwnCarTypeInLane = { CarTypesScrObj.VehicleTypes.NONE, CarTypesScrObj.VehicleTypes.NONE, CarTypesScrObj.VehicleTypes.NONE, CarTypesScrObj.VehicleTypes.NONE };
 
     // Start is called before the first frame update
     void Start()
@@ -25,29 +26,76 @@ public class CarSpawnerScript : MonoBehaviour
 
     void SpawnACar()
     {
-        //if upOrDown is same as before flip again
-        int upOrDown = Random.Range(0, 2);
-        while (upOrDown == (uint)previousUpOrDown)
+        bool isCurrSpwnUpLane = !isPrevSpwnUpLane;
+        isPrevSpwnUpLane = isCurrSpwnUpLane;
+        //Spawn in Up lane
+        if (isCurrSpwnUpLane)
         {
-            upOrDown = Random.Range(0, 2);
+            uint laneNum = (uint)Random.Range(2, 4);
+            float laneXPos = xRanges[laneNum];
+            Vector2 overlapPoint = new Vector2(laneXPos, car.transform.position.y + 20);
+
+            var collArr = Physics2D.OverlapBoxAll(overlapPoint, new Vector2(0.5f, 0.5f), 0);
+
+            if (collArr.Length == 0)
+            {
+                //Spawn
+                Debug.Log("Spawn");
+                SpawnCarAtLane(laneNum);
+            }
+
+        }
+        else //Spawn down lane
+        {
+            uint laneNum = (uint)Random.Range(0, 2);
+            float laneXPos = xRanges[laneNum];
+            Vector2 overlapPoint = new Vector2(laneXPos, car.transform.position.y + 20);
+
+            var collArr = Physics2D.OverlapBoxAll(overlapPoint, new Vector2(0.5f, 0.5f), 0);
+
+
+
+            if (collArr.Length == 0)
+            {
+                //Spawn
+                Debug.Log("Spawn");
+                SpawnCarAtLane(laneNum);
+
+            }
+        }
+        
+    }
+
+    //Spawn a random car at lane
+    void SpawnCarAtLane(uint lane)
+    {
+        //previous car in this lane
+        var prevSpawnedCarInThisLane = latestSpwnCarTypeInLane[lane];
+
+        var carToBeSpawned = (CarTypesScrObj.VehicleTypes)Random.Range(0, 4);
+
+        while (prevSpawnedCarInThisLane == carToBeSpawned)
+        {
+            carToBeSpawned = (CarTypesScrObj.VehicleTypes)Random.Range(0, 4);
         }
 
-        previousUpOrDown = (uint)upOrDown;
+        latestSpwnCarTypeInLane[lane] = carToBeSpawned;
 
-        //Spawn car driving up
-        if (upOrDown == 1)
+        var carObjToSpawn = carTypes.GetCarAtIndex((uint)carToBeSpawned);
+        carObjToSpawn = Instantiate(carObjToSpawn);
+
+        //If down lane
+        if (lane < 2)
         {
-            var carToSpawn = carTypes.GetCarAtIndex((uint)Random.Range(0, 4));
-            carToSpawn = Instantiate(carToSpawn);
-            carToSpawn.transform.rotation = Quaternion.Euler(0, 0, 0);
-            carToSpawn.transform.position = new Vector2(xRanges[Random.Range(2, 4)], car.transform.position.y + 20.0f);
+            carObjToSpawn.transform.position = new Vector2(xRanges[Random.Range(0, 2)], car.transform.position.y + 20.0f);
         }
-        else  //Spawn car driving down
+        else //Else up lane
         {
-            var carToSpawn = carTypes.GetCarAtIndex((uint)Random.Range(0, 4));
-            carToSpawn = Instantiate(carToSpawn);
-            carToSpawn.transform.position = new Vector2(xRanges[Random.Range(0, 2)], car.transform.position.y + 20.0f);
+            carObjToSpawn.transform.rotation = Quaternion.Euler(0, 0, 0);
+            carObjToSpawn.transform.position = new Vector2(xRanges[Random.Range(2, 4)], car.transform.position.y + 20.0f);
         }
+
+
     }
 
     IEnumerator CarSpawnCoroutine()
