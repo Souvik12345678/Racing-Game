@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1625385161871506381}
   - component: {fileID: 1625385161871506380}
   - component: {fileID: 1625385161871506379}
-  - component: {fileID: 1625385161871506378}
+  - component: {fileID: 114873078980865712}
   m_Layer: 0
   m_Name: pickup_2
   m_TagString: Untagged
@@ -129,7 +129,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
---- !u!114 &1625385161871506378
+--- !u!114 &114873078980865712
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -138,9 +138,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1625385161871506377}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c3f19062b6d4fef499bebbf037a907a0, type: 3}
+  m_Script: {fileID: 11500000, guid: 440a70b13efb46848947427fe0052b91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxForce: 10
-  forceMultipler: 30
-  desiredVelocity: 10
+  desiredVelocity: 5

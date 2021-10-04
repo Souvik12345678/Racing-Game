@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2968916950247893087}
   - component: {fileID: 2968916950247893085}
   - component: {fileID: 2968916950247893086}
-  - component: {fileID: 2968916950247893025}
+  - component: {fileID: 114267907752404968}
   m_Layer: 0
   m_Name: truck
   m_TagString: Untagged
@@ -129,7 +129,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
---- !u!114 &2968916950247893025
+--- !u!114 &114267907752404968
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -138,9 +138,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2968916950247893024}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c3f19062b6d4fef499bebbf037a907a0, type: 3}
+  m_Script: {fileID: 11500000, guid: 440a70b13efb46848947427fe0052b91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxForce: 10
-  forceMultipler: 30
-  desiredVelocity: 10
+  desiredVelocity: 5

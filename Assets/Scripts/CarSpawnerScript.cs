@@ -1,9 +1,9 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CarSpawnerScript : MonoBehaviour
 {
+    public float carSpawnEveryNSeconds;
     public CarTypesScrObj carTypes;
     public GameObject car;
 
@@ -13,7 +13,8 @@ public class CarSpawnerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating(nameof(SpawnACar), 3, 3);
+        //InvokeRepeating(nameof(SpawnACar), 3, 3);
+        StartCoroutine(CarSpawnCoroutine());
     }
 
     // Update is called once per frame
@@ -47,5 +48,16 @@ public class CarSpawnerScript : MonoBehaviour
             carToSpawn = Instantiate(carToSpawn);
             carToSpawn.transform.position = new Vector2(xRanges[Random.Range(0, 2)], car.transform.position.y + 20.0f);
         }
+    }
+
+    IEnumerator CarSpawnCoroutine()
+    {
+        for (; ; )
+        {
+            //Spawn a car and wait
+            SpawnACar();
+            yield return new WaitForSeconds(carSpawnEveryNSeconds);
+        }
+    
     }
 }

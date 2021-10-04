@@ -1670,6 +1670,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6622b595c14ea9e45a2f198be5c54873, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  carSpawnEveryNSeconds: 1.5
   carTypes: {fileID: 11400000, guid: 72143b9b2ede4154d9b979ecbceb27e5, type: 2}
   car: {fileID: 7907042734853354457}
 --- !u!1001 &1402907153668390862
