@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using UnityEditor;
+using System.Collections;
 using UnityEngine;
 
 public class CarSpawnerScript : MonoBehaviour
@@ -35,13 +36,18 @@ public class CarSpawnerScript : MonoBehaviour
             float laneXPos = xRanges[laneNum];
             Vector2 overlapPoint = new Vector2(laneXPos, car.transform.position.y + 20);
 
-            var collArr = Physics2D.OverlapBoxAll(overlapPoint, new Vector2(0.5f, 0.5f), 0);
+            Vector2 debugBoxSize = new Vector2(2.0f,5);
 
-            if (collArr.Length == 0)
+            //If no collider present at point
+            if (!IsOverlapingAnyCollider(overlapPoint, debugBoxSize))
             {
                 //Spawn
-                Debug.Log("Spawn");
+               // Debug.Log("Spawn");
                 SpawnCarAtLane(laneNum);
+            }
+            else
+            { 
+                Debug.Log("Car at lane");
             }
 
         }
@@ -51,16 +57,22 @@ public class CarSpawnerScript : MonoBehaviour
             float laneXPos = xRanges[laneNum];
             Vector2 overlapPoint = new Vector2(laneXPos, car.transform.position.y + 20);
 
-            var collArr = Physics2D.OverlapBoxAll(overlapPoint, new Vector2(0.5f, 0.5f), 0);
+            Vector2 debugBoxSize = new Vector2(2.0f, 5);
 
+            var collArr = Physics2D.OverlapBoxAll(overlapPoint, debugBoxSize, 0);
+ 
 
-
-            if (collArr.Length == 0)
+            //If no collider present at point
+            if (!IsOverlapingAnyCollider(overlapPoint, debugBoxSize))
             {
                 //Spawn
-                Debug.Log("Spawn");
+                //Debug.Log("Spawn");
                 SpawnCarAtLane(laneNum);
 
+            }
+            else
+            {
+                Debug.Log("Car at lane");
             }
         }
         
@@ -108,4 +120,26 @@ public class CarSpawnerScript : MonoBehaviour
         }
     
     }
+
+    bool IsOverlapingAnyCollider(Vector2 midPoint, Vector2 size)
+    {
+
+        Vector2 boxSize = size;
+
+        var arr = Physics2D.OverlapBoxAll(midPoint, boxSize, 0);
+
+        Vector2 v1 = new Vector2(midPoint.x - boxSize.x / 2, midPoint.y - boxSize.y / 2);
+        Vector2 v2 = new Vector2(midPoint.x + boxSize.x / 2, midPoint.y - boxSize.y / 2);
+        Vector2 v3 = new Vector2(midPoint.x + boxSize.x / 2, midPoint.y + boxSize.y / 2);
+        Vector2 v4 = new Vector2(midPoint.x - boxSize.x / 2, midPoint.y + boxSize.y / 2);
+
+        Debug.DrawLine(v1, v2, Color.green, 0.5f);
+        Debug.DrawLine(v2, v3, Color.green, 0.5f);
+        Debug.DrawLine(v3, v4, Color.green, 0.5f);
+        Debug.DrawLine(v4, v1, Color.green, 0.5f);
+
+        //return if array length is not zero
+        return (arr.Length != 0);
+    }
+
 }

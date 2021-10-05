@@ -19,6 +19,7 @@ public class NewOtherCarScript : MonoBehaviour
 
     void Update()
     {
-        rBody.velocity = transform.up * desiredVelocity;
+        if (rBody.velocity.magnitude != desiredVelocity)
+            rBody.velocity = transform.up * desiredVelocity;
     }
 }
