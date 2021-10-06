@@ -2,24 +2,40 @@
 
 public class NewOtherCarScript : MonoBehaviour
 {
+
     public float desiredVelocity;
+
+    public bool isDriving;
 
     Rigidbody2D rBody;
 
     private void Awake()
     {
         rBody = GetComponent<Rigidbody2D>();
+
+        isDriving = true;
     }
 
-    // Start is called before the first frame update
-    void Start()
+
+
+    void FixedUpdate()
     {
-        
+        if (isDriving)
+        {
+            if (rBody.velocity.magnitude != desiredVelocity)
+                rBody.velocity = transform.up * desiredVelocity;
+        }
     }
 
-    void Update()
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (rBody.velocity.magnitude != desiredVelocity)
-            rBody.velocity = transform.up * desiredVelocity;
+        //Stop driving after 0.8s 
+        Invoke(nameof(StopDriving), 0.2f);
     }
+
+    void StopDriving()
+    {
+        isDriving = false;
+    }
+
 }

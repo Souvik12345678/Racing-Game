@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 1625385161871506380}
   - component: {fileID: 1625385161871506379}
   - component: {fileID: 114873078980865712}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: pickup_2
-  m_TagString: Untagged
+  m_TagString: oth_cars
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -142,3 +142,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   desiredVelocity: 5
+  isDriving: 0

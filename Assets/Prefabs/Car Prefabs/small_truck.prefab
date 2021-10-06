@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 4704849361092894404}
   - component: {fileID: 4704849361092894407}
   - component: {fileID: 114836881090022820}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: small_truck
-  m_TagString: Untagged
+  m_TagString: oth_cars
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -142,3 +142,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   desiredVelocity: 5
+  isDriving: 0

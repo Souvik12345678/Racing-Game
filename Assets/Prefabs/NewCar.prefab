@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5333409793362500454}
   m_Layer: 0
   m_Name: AxlePin
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -173,7 +173,7 @@ GameObject:
   - component: {fileID: 5333409793727148477}
   m_Layer: 10
   m_Name: FrontLeftTire
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -348,7 +348,7 @@ DistanceJoint2D:
   m_ConnectedAnchor: {x: 0, y: -0.17}
   m_AutoConfigureDistance: 1
   m_Distance: 0.5000001
-  m_MaxDistanceOnly: 1
+  m_MaxDistanceOnly: 0
 --- !u!114 &5333409793727148477
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -382,7 +382,7 @@ GameObject:
   - component: {fileID: 5333409793820014632}
   m_Layer: 10
   m_Name: FrontRightTire
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -566,7 +566,7 @@ GameObject:
   - component: {fileID: 5333409794363559595}
   m_Layer: 0
   m_Name: NewCar
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -607,7 +607,7 @@ GameObject:
   - component: {fileID: 5333409794599387248}
   m_Layer: 10
   m_Name: RearLeftTire
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -770,7 +770,7 @@ GameObject:
   - component: {fileID: 5333409794688754646}
   m_Layer: 0
   m_Name: Car chasis
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -921,7 +921,7 @@ GameObject:
   - component: {fileID: 5333409795105703614}
   m_Layer: 10
   m_Name: RearRightTire
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

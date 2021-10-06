@@ -96,10 +96,12 @@ public class NewCarScript : MonoBehaviour
             //If axle pos is almost 0
             if (Mathf.Abs(axleSlider.jointTranslation) > 0.001f)
             {
-                float dir = -axleSlider.jointTranslation;
-                motorSpeed = (dir < 0) ? -turnSpeed : turnSpeed;
+                 float dir = -axleSlider.jointTranslation;
+                 motorSpeed = (dir < 0) ? -turnSpeed : turnSpeed;
             }
-            else { motorSpeed = 0; }
+            else
+            { motorSpeed = 0; 
+            }
         }
         else //If axle to any direction
         {
