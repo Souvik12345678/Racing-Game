@@ -7,8 +7,23 @@ public class GameManagerScript : MonoBehaviour
 {
     public GameObject Car;
     public TMP_Text scoreText;
+    public GameObject gameOverText;
+    public UILivesBarScript livesBar;
 
     float score;
+
+    private void OnEnable()
+    {
+        AllEventsScript.OnCarLifeDecrease += OnCarLifeDecrease;
+        AllEventsScript.OnCarDestroyed += OnCarDestroyed;
+    }
+
+    private void OnDisable()
+    {
+        AllEventsScript.OnCarLifeDecrease -= OnCarLifeDecrease;
+        AllEventsScript.OnCarDestroyed -= OnCarDestroyed;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,6 +35,25 @@ public class GameManagerScript : MonoBehaviour
     {
         CountCarDistance();  
     }
+
+    //Events
+
+    //Car life decrease event listener
+    void OnCarLifeDecrease(uint currLives)
+    {
+        livesBar.SetLives(currLives);
+    }
+
+    void OnCarDestroyed()
+    {
+        Invoke(nameof(OnGameOver), 2.0f);
+    }
+
+    void OnGameOver()
+    {
+        gameOverText.SetActive(true);
+    }
+
 
     void CountCarDistance()
     {

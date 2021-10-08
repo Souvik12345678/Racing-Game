@@ -47,7 +47,7 @@ public class CarSpawnerScript : MonoBehaviour
             }
             else
             { 
-                Debug.Log("Car at lane");
+                //Debug.Log("Car at lane");
             }
 
         }

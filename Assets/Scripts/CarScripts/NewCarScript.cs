@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 //Car class
@@ -23,24 +24,36 @@ public class NewCarScript : MonoBehaviour
     AccState currentAccState = AccState.NONE;
     TurnState currentTurnState = TurnState.NONE;
     int driveDir = 0;
+    uint lives;
+    bool isCarOk;
 
     private void Awake()
     {
+        lives = 3;
+        isCarOk = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        //Accelerator
-        if (Input.GetKey(KeyCode.W)) { currentAccState = AccState.UP; driveDir = 1; }
-        else if (Input.GetKey(KeyCode.S)) { currentAccState = AccState.DOWN; driveDir = -1; }
-        else { currentAccState = AccState.NONE; driveDir = 0; }
+        if (isCarOk)
+        {
+            //Accelerator
+            if (Input.GetKey(KeyCode.W)) { currentAccState = AccState.UP; driveDir = 1; }
+            else if (Input.GetKey(KeyCode.S)) { currentAccState = AccState.DOWN; driveDir = -1; }
+            else { currentAccState = AccState.NONE; driveDir = 0; }
 
-        //Steering
-        if (Input.GetKey(KeyCode.A)) { currentTurnState = TurnState.LEFT; }
-        else if (Input.GetKey(KeyCode.D)) { currentTurnState = TurnState.RIGHT; }
-        else { currentTurnState = TurnState.NONE; }
-
+            //Steering
+            if (Input.GetKey(KeyCode.A)) { currentTurnState = TurnState.LEFT; }
+            else if (Input.GetKey(KeyCode.D)) { currentTurnState = TurnState.RIGHT; }
+            else { currentTurnState = TurnState.NONE; }
+        }
+        else
+        {
+            currentAccState = AccState.NONE; 
+            driveDir = 0;
+            currentTurnState = TurnState.NONE;
+        }
 
     }
 
@@ -54,6 +67,43 @@ public class NewCarScript : MonoBehaviour
 
         UpdateTurn_2();
 
+    }
+    
+    //Collision events
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+
+        if (collision.gameObject.CompareTag("oth_cars"))
+        {
+            //Collision with a car with force
+            if (collision.GetContact(0).normalImpulse > 5.0f)
+            {
+                // Debug.Log("Collided with  a car with force : " + collision.GetContact(0).normalImpulse.ToString());
+                DecreaseLife();
+            }
+        }
+
+    }
+
+    private void DecreaseLife()
+    {
+        if (lives > 0)
+        {
+            lives--;
+            //fire life decrease event
+            AllEventsScript.OnCarLifeDecrease.Invoke(lives);
+
+            if (lives == 0 && isCarOk)
+            {
+                OnCarDestroyed();
+            }
+        }
+    }
+
+    void OnCarDestroyed()
+    {
+        isCarOk = false;
+        AllEventsScript.OnCarDestroyed.Invoke();
     }
 
     /*
