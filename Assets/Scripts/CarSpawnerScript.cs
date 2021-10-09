@@ -19,12 +19,6 @@ public class CarSpawnerScript : MonoBehaviour
         StartCoroutine(CarSpawnCoroutine());
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     void SpawnACar()
     {
         bool isCurrSpwnUpLane = !isPrevSpwnUpLane;
@@ -72,7 +66,7 @@ public class CarSpawnerScript : MonoBehaviour
             }
             else
             {
-                Debug.Log("Car at lane");
+                //Debug.Log("Car at lane");
             }
         }
         

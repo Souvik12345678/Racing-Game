@@ -48,3 +48,6 @@ TagManager:
   - name: Car
     uniqueID: 1023376105
     locked: 0
+  - name: Smoke
+    uniqueID: 2141952605
+    locked: 0

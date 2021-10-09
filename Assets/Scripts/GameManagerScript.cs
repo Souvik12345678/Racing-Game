@@ -1,6 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public class GameManagerScript : MonoBehaviour
@@ -52,8 +51,13 @@ public class GameManagerScript : MonoBehaviour
     void OnGameOver()
     {
         gameOverText.SetActive(true);
+        Invoke(nameof(GotoHomeScene), 15.0f);
     }
 
+    public void GotoHomeScene()
+    {
+        SceneManager.LoadSceneAsync(0);
+    }
 
     void CountCarDistance()
     {

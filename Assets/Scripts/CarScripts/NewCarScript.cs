@@ -11,6 +11,8 @@ public class NewCarScript : MonoBehaviour
     public float turnSpeed;
     public float desiredPos;
 
+    public GameObject smokePrefab;
+
     //Four Wheels
     public SliderJoint2D axleSlider;
     //public HingeJoint2D fLJoint;
@@ -103,6 +105,10 @@ public class NewCarScript : MonoBehaviour
     void OnCarDestroyed()
     {
         isCarOk = false;
+        //Add smoke to bonnet
+        var smk = Instantiate(smokePrefab, transform);
+        smk.transform.localPosition = new Vector2(0, 0.232f);
+
         AllEventsScript.OnCarDestroyed.Invoke();
     }
 
