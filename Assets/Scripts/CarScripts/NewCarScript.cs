@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 //Car class
@@ -28,17 +27,19 @@ public class NewCarScript : MonoBehaviour
     int driveDir = 0;
     uint lives;
     bool isCarOk;
+    bool isCarPaused;
 
     private void Awake()
     {
         lives = 3;
         isCarOk = true;
+        isCarPaused = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (isCarOk)
+        if (isCarOk && !isCarPaused)
         {
             //Accelerator
             if (Input.GetKey(KeyCode.W)) { currentAccState = AccState.UP; driveDir = 1; }
@@ -52,7 +53,7 @@ public class NewCarScript : MonoBehaviour
         }
         else
         {
-            currentAccState = AccState.NONE; 
+            currentAccState = AccState.NONE;
             driveDir = 0;
             currentTurnState = TurnState.NONE;
         }
@@ -78,7 +79,7 @@ public class NewCarScript : MonoBehaviour
         if (collision.gameObject.CompareTag("oth_cars"))
         {
             //Collision with a car with force
-            if (collision.GetContact(0).normalImpulse > 5.0f)
+            if (collision.GetContact(0).normalImpulse > 4.0f)
             {
                 // Debug.Log("Collided with  a car with force : " + collision.GetContact(0).normalImpulse.ToString());
                 DecreaseLife();
@@ -171,5 +172,16 @@ public class NewCarScript : MonoBehaviour
         axleSlider.motor = motor;
 
     }
+
+    public void PauseCar()
+    {
+        isCarPaused = true;
+    }
+
+    public void ResumeCar()
+    {
+        isCarPaused = false;
+    }
+
 }
 

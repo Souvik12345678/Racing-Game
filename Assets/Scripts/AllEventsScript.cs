@@ -12,4 +12,5 @@ public class AllEventsScript : MonoBehaviour
     //On car life decrease event
     public static Func1 OnCarLifeDecrease;
     public static BlankFunc OnCarDestroyed;
+    public static BlankFunc OnCountdownOver;
 }

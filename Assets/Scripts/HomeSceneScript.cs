@@ -3,17 +3,19 @@ using UnityEngine;
 
 public class HomeSceneScript : MonoBehaviour
 {
+
+    private void Awake()
+    {
+        //Set screen size for Standalone
+#if UNITY_STANDALONE
+        Screen.SetResolution(1080, 1920, true);
+        Screen.fullScreen = true;
+#endif
+    }
     // Start is called before the first frame update
     void Start()
     {
         
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    
     }
 
     public void OnPlayButtonPressed()
