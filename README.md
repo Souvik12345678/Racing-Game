@@ -1,3 +1,8 @@
 # Racing-Game
+
+Top-down car game with 4 way control.
+Made with **Unity**
  
- Topdown racing game
+ *This game can be played 
+ [here](https://souvik-2000.itch.io/top-down-racing).
+ 
